@@ -16,12 +16,11 @@
         embedded_svc.settings.language = '';
         embedded_svc.settings.enabledFeatures = ['LiveAgent'];
         embedded_svc.settings.entryFeature = 'LiveAgent';
-
-        // Adiciona um ouvinte para o evento liveAgentSessionKey
-        embedded_svc.addEventHandler('liveAgentSessionKey', function(event) {
-          console.log('liveAgentSessionKey:', event.liveAgentSessionKey);
-        });
         
+        embedded_svc.addEventHandler("onChatConferenceEnded", function(data) {
+            console.log(data);
+        });
+                
         var j = embedded_svc.init(
             'https://hipersistema--hiperdev.sandbox.my.salesforce.com',
             'https://hipersistema--hiperdev.sandbox.my.site.com/ajudahiper',
