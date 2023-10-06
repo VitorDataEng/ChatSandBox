@@ -21,8 +21,8 @@
         embedded_svc.addEventHandler('liveAgentSessionKey', function(event) {
           console.log('liveAgentSessionKey:', event.liveAgentSessionKey);
         });
-
-        embedded_svc.init(
+        
+        var j = embedded_svc.init(
             'https://hipersistema--hiperdev.sandbox.my.salesforce.com',
             'https://hipersistema--hiperdev.sandbox.my.site.com/ajudahiper',
             gslbBaseURL,
@@ -37,6 +37,8 @@
                 isOfflineSupportEnabled: false
             }
         );
+      
+       console.log(j);
     };
 
     if (!window.embedded_svc) {
