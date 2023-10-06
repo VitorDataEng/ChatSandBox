@@ -17,6 +17,11 @@
         embedded_svc.settings.enabledFeatures = ['LiveAgent'];
         embedded_svc.settings.entryFeature = 'LiveAgent';
 
+        // Adiciona um ouvinte para o evento liveAgentSessionKey
+        embedded_svc.addEventHandler('liveAgentSessionKey', function(event) {
+          console.log('liveAgentSessionKey:', event.liveAgentSessionKey);
+        });
+
         embedded_svc.init(
             'https://hipersistema--hiperdev.sandbox.my.salesforce.com',
             'https://hipersistema--hiperdev.sandbox.my.site.com/ajudahiper',
@@ -39,21 +44,10 @@
         s.setAttribute('src', 'https://hipersistema--hiperdev.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function() {
             initESW(null);
-            // Adiciona um ouvinte para o evento de sessionData
-            embedded_svc.liveAgent.onSessionData(function(sessionData) {
-              handleSessionData(sessionData);
-            });
         };
         document.body.appendChild(s);
     } else {
         initESW('https://service.force.com');
-    }
-
-    function handleSessionData(sessionData) {
-        if (sessionData && sessionData.sessionKey) {
-            const liveagentSessionKey = sessionData.sessionKey;
-            console.log('X-Liveagent-Session-Key:', liveagentSessionKey);      
-        }
     }
   </script>
 </html>
