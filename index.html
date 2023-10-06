@@ -44,7 +44,9 @@
   function handleSessionData(sessionData) {
       if (sessionData && sessionData.sessionKey) {
         const liveagentSessionKey = sessionData.sessionKey;
-        console.log('X-Liveagent-Session-Key:', liveagentSessionKey);
+        console.log('X-Liveagent-Session-Key:', liveagentSessionKey);      
+      }
+    }
  
 
     if (!window.embedded_svc) {
